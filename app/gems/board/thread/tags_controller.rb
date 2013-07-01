@@ -1,8 +1,8 @@
 module Board
-  class Thread::Tag < ::ApplicationController
-    respond_to :js, :json, :html, :xml
+  class Thread::TagsController < ::ApplicationController
+    respond_to :js, :json, :html
     expose(:thread) do
-      Thread.find_by_id(params[:thread_id])
+      ::Thread.find_by_id(params[:thread_id])
     end
     expose(:tag) do
       thread.create params[:tag]

@@ -1,7 +1,7 @@
 module Board
-  class Tag::Controller < ::ApplicationController
-    respond_to :js, :json, :html, :xml
-    expose(:tag) { Board::Tag.find_by_id params[:id]}
+  class TagsController < ::ApplicationController
+    respond_to :js, :json, :html
+    expose(:tag) { ::Board::TagRecord.find_by_id params[:id] }
     def show
       respond_with tag
     end

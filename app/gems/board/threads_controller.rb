@@ -1,7 +1,7 @@
 module Board
-  class Thread::Controller < ::ApplicationController
-    respond_to :js, :json, :html, :xml
-    expose(:thread) { Board::Thread.find_by_id params[:id]}
+  class ThreadsController < ::ApplicationController
+    respond_to :js, :json, :html
+    expose(:thread) { ::Board::ThreadRecord.find_by_id params[:id] }
     def show
       respond_with thread
     end

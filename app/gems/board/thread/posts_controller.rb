@@ -1,8 +1,8 @@
 module Board
-  class Thread::Post < ::ApplicationController
-    respond_to :js, :json, :html, :xml
+  class Thread::PostsController < ::ApplicationController
+    respond_to :js, :json, :html
     expose(:thread) do
-      Thread.find_by_id(params[:thread_id])
+      ::Thread.find_by_id(params[:thread_id])
     end
     expose(:post) do
       thread.create params[:post]

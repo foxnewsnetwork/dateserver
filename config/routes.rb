@@ -1,4 +1,12 @@
 Meetup::Application.routes.draw do
+  resources :tags, :controller => "boards/tags", :only => [:show, :destroy] do
+    resources :threads, :controller => "boards/tag/threads", :only => [:create, :index]
+  end
+
+  resources :threads, :controller => "boards/threads", :only => [:show, :update, :destroy] do
+    resources :tags, :controller => "boards/thread/tags", :only => [:index, :create]
+    resources :posts, :controller => "boards/thread/posts", :only => [:create, :index]
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
